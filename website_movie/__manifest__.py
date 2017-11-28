@@ -15,6 +15,7 @@ Movie
     "data": [
     'security/ir.model.access.csv',
     'data/data.xml',
+    'views/backend.xml',
     'views/template.xml',
 
     ],

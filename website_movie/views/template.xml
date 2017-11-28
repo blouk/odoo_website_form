@@ -39,7 +39,6 @@
                                         <i class="fa fa-search"/>
                                         Browse</button>
                                 </span>
-
                             </div>
                         </div>
                         <div class="form-group">
@@ -68,7 +67,7 @@
             <section>
                 <div class="container">
                     <h1>Thanks</h1>
-                    <a class="btn btn-success" href="/movie/list" alt="Movie List">Movie list</a>
+                    <a class="btn btn-success" href="/movie/list" alt="Movie List" groups="website.group_website_designer">Movie list</a>
                 </div>
             </section>
         </t>
@@ -79,16 +78,23 @@
             <section>
                 <div class="container">
                     <h1>Movie List</h1>
-
-                    <a href="/movie/form" alt="Add Movie" class="pull-right btn btn-success">Add Movie</a>
-
+                    <a href="/movie/form" alt="Add Movie" class="pull-right btn btn-success" groups="website.group_website_designer">Add Movie</a>
                     <div class="clearfix"/>
                     <div class="row">
                         <div class="container">
-                            <div class="col-sm-4 mv-list-block" t-foreach="movies" t-as="movie">
-                                <t t-esc="movie.name"/>
-                                <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
-                            </div>
+                            <t t-set="num" t-value="0"/>
+                            <t t-foreach="movies" t-as="movie">
+                                <div class="col-sm-4 mv-list-block mt8 mb8">
+                                    <h3 class="text-center" t-esc="movie.name"/>
+                                    <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
+                                    <button class="btn btn-primary mt32 " type="button" data-toggle="collapse" t-att-data-target="'#block%s'%(num)" aria-expanded="false" t-att-aria-controls="'#block%s'%(num)">Description</button>
+                                    <div class="collapse mt16 mb16" t-att-id="'block%s' %(num)">
+                                        <div class="alert alert-warning" t-esc="movie.description"/>
+                                    </div>
+                                </div>
+                                <t t-set="num" t-value="num+1"/>
+                                <div t-att-class="'clearfix' if num%3==0 else ''"/>
+                            </t>
                         </div>
                     </div>
                 </div>

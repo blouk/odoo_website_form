@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_movie" model="ir.actions.act_window">
+        <field name="name">Movie</field>
+        <field name="res_model">movie</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                manage movie
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_movie" name="Movie" action="action_movie" sequence="0"/>
+</odoo>
