@@ -13,6 +13,7 @@ Movie
         'website',
     ],
     "data": [
+    'security/ir.model.access.csv',
     'data/data.xml',
     'views/template.xml',
 

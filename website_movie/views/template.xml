@@ -13,6 +13,11 @@
                 <div class="container">
                     <h1>Add a movie</h1>
                     <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                    <t t-if="error">
+                        <div class="alert alert-danger">
+                            <h3 class="text-center">Error</h3>
+                        </div>
+                    </t>
                     <form class="mv-form" method="post" t-att-action="url_for('form')" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="movieName">name</label>
@@ -63,7 +68,7 @@
             <section>
                 <div class="container">
                     <h1>Thanks</h1>
-                    <a href="/movie/list" alt="Movie List">Movie list</a>
+                    <a class="btn btn-success" href="/movie/list" alt="Movie List">Movie list</a>
                 </div>
             </section>
         </t>
@@ -78,14 +83,14 @@
                     <a href="/movie/form" alt="Add Movie" class="pull-right btn btn-success">Add Movie</a>
 
                     <div class="clearfix"/>
-                        <div class="row">
-                            <div class="container">
-                                <div class="col-sm-4 mv-list-block" t-foreach="movies" t-as="movie">
-                                    <t t-esc="movie.name"/>
-                                    <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
-                                </div>
+                    <div class="row">
+                        <div class="container">
+                            <div class="col-sm-4 mv-list-block" t-foreach="movies" t-as="movie">
+                                <t t-esc="movie.name"/>
+                                <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
                             </div>
                         </div>
+                    </div>
                 </div>
             </section>
         </t>

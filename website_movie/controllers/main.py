@@ -8,7 +8,7 @@ class MovieController(http.Controller):
 
     @http.route('/movie/form', auth='public', website=True, csrf=False)
     def movie_form(self, **vals):
-        #no check on fields 
+        #no check on fields
         form_error = False
         if request.httprequest.method == 'POST':
             movie = request.env['movie']
@@ -18,7 +18,7 @@ class MovieController(http.Controller):
                 record['image'] = base64.encodestring(vals['movieImage'].read())
 
             try:
-                movie.sudo().create(record)
+                movie.create(record)
             except Exception:
                 request.cr.rollback()
                 form_error = True
