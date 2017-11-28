@@ -30,12 +30,10 @@
                         <div class="form-group">
                             <input type="file" name="movieImage" class="mv-file"/>
                             <div class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="fa fa-file-image-o"/>
-                                </span>
-                                <input type="text" class="form-control input-lg mv-file" disabled="disabled" placeholder="Upload Image"/>
+
+                                <input type="text" class="form-control  mv-file" disabled="disabled" placeholder="Upload Image"/>
                                 <span class="input-group-btn">
-                                    <button class="btn btn-primary input-lg mv-browse" type="button">
+                                    <button class="btn btn-primary mv-browse" type="button">
                                         <i class="fa fa-search"/>
                                         Browse</button>
                                 </span>
@@ -44,13 +42,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6 text-center">
-                                    <button class="btn btn-primary input-lg js-mv-submit-post mb16" type="submit">
+                                    <button class="btn btn-success input-lg js-mv-submit-post mb16" type="submit">
                                         Send (http post)
                                     </button>
                                 </div>
 
                                 <div class="col-sm-6 text-center">
-                                    <button class="btn btn-primary input-lg js-mv-submit-ajx mb16" type="submit">
+                                    <button class="btn btn-success input-lg js-mv-submit-ajx mb16" type="submit">
                                         Send (ajax post)
                                     </button>
                                 </div>
@@ -67,7 +65,8 @@
             <section>
                 <div class="container">
                     <h1>Thanks</h1>
-                    <a class="btn btn-success" href="/movie/list" alt="Movie List" groups="website.group_website_designer">Movie list</a>
+                    <a class="btn btn-success" href="/movie/list" alt="Movie List"><i class="fa fa-file-video-o"/>
+                        Movie list</a>
                 </div>
             </section>
         </t>
@@ -78,18 +77,24 @@
             <section>
                 <div class="container">
                     <h1>Movie List</h1>
-                    <a href="/movie/form" alt="Add Movie" class="pull-right btn btn-success" groups="website.group_website_designer">Add Movie</a>
+                    <a href="/movie/form" alt="Add Movie" class="pull-right btn btn-success" groups="website.group_website_designer"><i class="fa fa-plus"/>
+                        Add Movie</a>
                     <div class="clearfix"/>
                     <div class="row">
-                        <div class="container">
+                        <div class="container mb32">
                             <t t-set="num" t-value="0"/>
                             <t t-foreach="movies" t-as="movie">
                                 <div class="col-sm-4 mv-list-block mt8 mb8">
                                     <h3 class="text-center" t-esc="movie.name"/>
                                     <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
-                                    <button class="btn btn-primary mt32 " type="button" data-toggle="collapse" t-att-data-target="'#block%s'%(num)" aria-expanded="false" t-att-aria-controls="'#block%s'%(num)">Description</button>
+                                    <button class="btn btn-primary mt32 " type="button" data-toggle="collapse" t-att-data-target="'#block%s'%(num)" aria-expanded="false" t-att-aria-controls="'#block%s'%(num)"><i class="fa fa-align-left"/>
+                                        Description</button>
                                     <div class="collapse mt16 mb16" t-att-id="'block%s' %(num)">
-                                        <div class="alert alert-warning" t-esc="movie.description"/>
+                                        <div class="alert alert-warning">
+                                            <p>
+                                                <small t-esc="movie.description"/>
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                                 <t t-set="num" t-value="num+1"/>

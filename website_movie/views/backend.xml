@@ -13,5 +13,5 @@
         </field>
     </record>
 
-    <menuitem id="menu_movie" name="Movie" action="action_movie" sequence="0"/>
+    <menuitem id="menu_movie" name="Movie" action="action_movie" sequence="0" web_icon="website_movie,static/src/img/movie_icon.png"/>
 </odoo>
