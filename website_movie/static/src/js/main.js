@@ -10,6 +10,9 @@ odoo.define('Movie', function(require) {
             if (this.form.length > 0) {
                 this.form.on('click', '.mv-browse', self.on_click_button_browse);
                 this.form.on('change', '.mv-file', self.on_change_file_change);
+                this.form.on('click', '.js-mv-submit-post', self.on_click_send_post);
+                this.form.on('click', '.js-mv-submit-ajx', self.on_click_send_ajx);
+
             }
         },
         on_click_button_browse: function(ev) {
@@ -18,6 +21,14 @@ odoo.define('Movie', function(require) {
         on_change_file_change: function() {
             $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
         },
+
+        on_click_send_post: function(ev) {
+
+        },
+
+        on_click_send_ajx: function(ev) {
+            ev.preventDefault();
+        }
 
     });
 

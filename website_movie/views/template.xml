@@ -13,7 +13,7 @@
                 <div class="container">
                     <h1>Add a movie</h1>
                     <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
-                    <form class="mv-form">
+                    <form class="mv-form" method="post" t-att-action="url_for('form')" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="movieName">name</label>
                             <input type="text" name="movieName" class="form-control" id="movieName" placeholder="Enter a movie name"/>
@@ -23,7 +23,7 @@
                             <textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Enter a movie description"/>
                         </div>
                         <div class="form-group">
-                            <input type="file" name="image" class="mv-file"/>
+                            <input type="file" name="movieImage" class="mv-file"/>
                             <div class="input-group">
                                 <span class="input-group-addon">
                                     <i class="fa fa-file-image-o"/>
@@ -54,6 +54,38 @@
                         </div>
 
                     </form>
+                </div>
+            </section>
+        </t>
+    </template>
+    <template id="thanks">
+        <t t-call="website.layout">
+            <section>
+                <div class="container">
+                    <h1>Thanks</h1>
+                    <a href="/movie/list" alt="Movie List">Movie list</a>
+                </div>
+            </section>
+        </t>
+    </template>
+
+    <template id="list">
+        <t t-call="website.layout">
+            <section>
+                <div class="container">
+                    <h1>Movie List</h1>
+
+                    <a href="/movie/form" alt="Add Movie" class="pull-right btn btn-success">Add Movie</a>
+
+                    <div class="clearfix"/>
+                        <div class="row">
+                            <div class="container">
+                                <div class="col-sm-4 mv-list-block" t-foreach="movies" t-as="movie">
+                                    <t t-esc="movie.name"/>
+                                    <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </section>
         </t>

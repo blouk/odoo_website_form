@@ -13,7 +13,9 @@ Movie
         'website',
     ],
     "data": [
+    'data/data.xml',
     'views/template.xml',
+
     ],
     'qweb': [
     ],
