@@ -1,0 +1,61 @@
+<odoo>
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link rel="stylesheet" href="/website_movie/static/src/css/main.css"/>
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <script src="/website_movie/static/src/js/main.js" type="text/javascript"/>
+        </xpath>
+    </template>
+    <template id="form" name="Form to add a movie">
+        <t t-call="website.layout">
+            <section>
+                <div class="container">
+                    <h1>Add a movie</h1>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                    <form class="mv-form">
+                        <div class="form-group">
+                            <label for="movieName">name</label>
+                            <input type="text" name="movieName" class="form-control" id="movieName" placeholder="Enter a movie name"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="movieDescription">Description</label>
+                            <textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Enter a movie description"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="image" class="mv-file"/>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-file-image-o"/>
+                                </span>
+                                <input type="text" class="form-control input-lg mv-file" disabled="disabled" placeholder="Upload Image"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary input-lg mv-browse" type="button">
+                                        <i class="fa fa-search"/>
+                                        Browse</button>
+                                </span>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <button class="btn btn-primary input-lg js-mv-submit-post mb16" type="submit">
+                                        Send (http post)
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-6 text-center">
+                                    <button class="btn btn-primary input-lg js-mv-submit-ajx mb16" type="submit">
+                                        Send (ajax post)
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </t>
+    </template>
+</odoo>
