@@ -5,5 +5,6 @@ class Movie(models.Model):
     _order = "create_date desc, id desc"
 
     name = fields.Char("Movie Name", required=True)
+    rate = fields.Integer("Movie Rate", required=True)
     description = fields.Char("Movie Description")
     image = fields.Binary("Image", attachment=True, help="Movie Image")

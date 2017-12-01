@@ -13,7 +13,7 @@ class MovieController(http.Controller):
         if request.httprequest.method == 'POST':
             movie = request.env['movie']
 
-            record = dict(name=vals['movieName'].strip(), description=vals['movieDescription'].strip())
+            record = dict(name=vals['movieName'].strip(), description=vals['movieDescription'].strip(),rate=vals['movieRate'])
             if(vals.get('movieImage')):
                 record['image'] = base64.encodestring(vals['movieImage'].read())
 

@@ -10,13 +10,14 @@ Movie
 ========================
     """,
     "depends": [
-        'website',
+        'website', 'report',
     ],
     "data": [
-    'security/ir.model.access.csv',
-    'data/data.xml',
-    'views/backend.xml',
-    'views/template.xml',
+        'security/ir.model.access.csv',
+        'data/data.xml',
+        'report/report.xml',
+        'views/backend.xml',
+        'views/template.xml',
 
     ],
     'qweb': [

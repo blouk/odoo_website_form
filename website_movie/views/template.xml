@@ -13,6 +13,9 @@
                 <div class="container">
                     <h1>Add a movie</h1>
                     <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                    <a class="btn btn-success pull-right" href="/movie/list" alt="Movie List"><i class="fa fa-file-video-o"/>
+                        Movie list</a>
+                    <div class="clearfix"/>
                     <t t-if="error">
                         <div class="alert alert-danger">
                             <h3 class="text-center">Error</h3>
@@ -26,6 +29,18 @@
                         <div class="form-group">
                             <label for="movieDescription">Description</label>
                             <textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Enter a movie description"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="movieRate">Rate</label>
+                            <select class="form-control" id="movieRate" name="movieRate">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <input type="file" name="movieImage" class="mv-file"/>
@@ -42,13 +57,13 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-sm-6 text-center">
-                                    <button class="btn btn-success input-lg js-mv-submit-post mb16" type="submit">
+                                    <button class="btn btn-danger input-lg js-mv-submit-post mb16" type="submit">
                                         Send (http post)
                                     </button>
                                 </div>
 
                                 <div class="col-sm-6 text-center">
-                                    <button class="btn btn-success input-lg js-mv-submit-ajx mb16" type="submit">
+                                    <button class="btn btn-danger input-lg js-mv-submit-ajx mb16" type="submit">
                                         Send (ajax post)
                                     </button>
                                 </div>
@@ -87,7 +102,13 @@
                                 <div class="col-sm-4 mv-list-block mt8 mb8">
                                     <h3 class="text-center" t-esc="movie.name"/>
                                     <img t-if="movie.image" t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive"/>
-                                    <button class="btn btn-primary mt32 " type="button" data-toggle="collapse" t-att-data-target="'#block%s'%(num)" aria-expanded="false" t-att-aria-controls="'#block%s'%(num)"><i class="fa fa-align-left"/>
+                                    <div class="text-center mt16">
+                                        <t t-set="rate" t-value="[None] * int(movie.rate)"/>
+                                        <t t-foreach="rate" t-as="r">
+                                            <i class="fa fa-star" aria-hidden="true"/>
+                                        </t>
+                                    </div>
+                                    <button class="btn btn-primary mt16 " type="button" data-toggle="collapse" t-att-data-target="'#block%s'%(num)" aria-expanded="false" t-att-aria-controls="'#block%s'%(num)"><i class="fa fa-align-left"/>
                                         Description</button>
                                     <div class="collapse mt16 mb16" t-att-id="'block%s' %(num)">
                                         <div class="alert alert-warning">
@@ -106,4 +127,5 @@
             </section>
         </t>
     </template>
+
 </odoo>
