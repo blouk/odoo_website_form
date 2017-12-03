@@ -1,0 +1,71 @@
+@font-face
+    font-family: '28 Days Later'
+    src: url('/website_movie/static/src/fonts/28DaysLater.eot')
+    src: url('/website_movie/static/src/fonts/28DaysLater.eot?#iefix') format('embedded-opentype'),url('/website_movie/static/src/fonts/28DaysLater.woff') format('woff'),url('/website_movie/static/src/fonts/28DaysLater.ttf') format('truetype')
+    font-weight: normal
+    font-style: normal
+
+$height: 450px
+
+@media screen, print
+    html,body
+        display: block
+
+    .mv-report
+        position: relative
+        height: 100vw
+        header
+            .img-header
+                width: 100%
+                overflow: hidden
+                height: $height
+                img
+                    width: 100%
+            padding: 0
+            z-index: 2
+            positon: relative
+            width: 100%
+            min-height: $height
+
+            .overlay
+                padding-top: 100px
+                background:rgba(0, 0, 0, 0.2)
+                min-height: $height
+                padding-bottom: 40px
+                position: absolute
+                top: 0
+                width: 100%
+
+            h1
+                font-family: '28 Days Later'
+                color: rgb(255,255,255)
+                text-transform: uppercase
+                padding: 15px
+                font-size: 6em
+                max-width: 6em
+                text-shadow: 1px 1px 10px rgba(0,0,0,.4)
+                text-align: center
+                margin-left: auto
+                margin-right: auto
+                display: block
+            h4
+                color: rgb(240,218,11)
+                text-shadow: 1px 1px 10px rgba(0,0,0,.4)
+                font-size: 3em
+
+
+
+        .description
+            background: rgba(0,0,0,.2)
+            font-size: 25px
+            padding: 20px 20px
+            min-height: 450px
+
+        footer
+            display: block
+            width: 100%
+            position: absolute
+            display: block
+            padding: 20px 20px
+            .logo
+                max-height: 30px !important

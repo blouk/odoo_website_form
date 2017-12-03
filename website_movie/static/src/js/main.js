@@ -3,7 +3,7 @@ odoo.define('Movie', function(require) {
     var core = require('web.core');
     var Class = require('web.Class');
     var Base = require('web_editor.base');
-    var MovieForm = Class.extend({
+    var Movie = Class.extend({
         init: function() {
             var self = this;
             this.form = $('.mv-form');
@@ -14,7 +14,19 @@ odoo.define('Movie', function(require) {
                 this.form.on('click', '.js-mv-submit-ajx', self.on_click_send_ajx);
 
             }
+
+            var edit_btn = $('.js-edit-movie');
+            if (edit_btn.length > 0) {
+                edit_btn.on('click', self.on_movie_edit);
+            }
         },
+        on_movie_edit: function(ev) {
+            var id = $(this).data('movie-id');
+            if(id){
+                window.location = '/movie/' + id + '/edit';
+            }
+        },
+
         on_click_button_browse: function(ev) {
             $('[type=file]').trigger('click');
         },
@@ -33,6 +45,6 @@ odoo.define('Movie', function(require) {
     });
 
     Base.ready().then(function() {
-        new MovieForm();
+        new Movie();
     });
 });

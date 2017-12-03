@@ -29,6 +29,21 @@ class MovieController(http.Controller):
 
         return request.render('website_movie.form', vals)
 
+
+    @http.route('/movie/<int:movie_id>/edit', auth='public', website=True, csrf=False)
+    def detail(self,movie_id):
+        error = False
+        record = dict()
+        movie = request.env['movie']
+        movie_id = movie.search([('id','=',movie_id)])
+        if movie_id:
+            record['movie'] = movie_id
+        else:
+            error = True
+        record['no_movie'] = error
+        return request.render('website_movie.detail',record)
+
+
     @http.route('/movie/thanks', auth='public', website=True, csrf=False)
     def thanks(self):
         return request.render('website_movie.thanks')

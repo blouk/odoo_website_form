@@ -13,8 +13,45 @@
         </field>
     </record>
 
+    <record id="view_movie_form" model="ir.ui.view">
+    <field name="name">movie.form</field>
+    <field name="model">movie</field>
+    <field name="arch" type="xml">
+        <form string="Movie" create="false">
+            <sheet>
+                <field name="image" widget="image" class="oe_avatar"/>
+                <div class="oe_title">
+                    <label class="oe_edit_only" for="name" string="Movie Name"/>
+                    <h1>
+                        <field name="name" placeholder="Movie Name"/>
+                    </h1>
+                </div>
+                <group name="main_field_group">
+                    <group>
+                        <field name="description"/>
+                        <field name="rate"/>
+                        <field name="actor_ids" widget="many2many_tags"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+    <record id="action_actor" model="ir.actions.act_window">
+        <field name="name">Actors</field>
+        <field name="res_model">actor</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p>
+                manage actors
+            </p>
+        </field>
+    </record>
+
+
     <menuitem id="menu_movie" name="Movie" action="action_movie" sequence="0" web_icon="website_movie,static/src/img/movie_icon.png"/>
-
-
-
+    <menuitem id="menu_movie_e" name="Movie" sequence="1" parent="menu_movie" action="action_movie"/>
+    <menuitem id="menu_actor_e" name="Actor" sequence="2" parent="menu_movie" action="action_actor"/>
 </odoo>
