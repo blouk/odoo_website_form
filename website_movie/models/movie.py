@@ -10,5 +10,4 @@ class Movie(models.Model):
     rate = fields.Integer("Movie Rate", required=True)
     description = fields.Char("Movie Description")
     image = fields.Binary("Image", attachment=True, help="Movie Image")
-    actor_ids = fields.Many2many(
-        'actor', 'actor_movie_rel', 'actors', ondelete='cascade')
+    actor_ids = fields.Many2many('actor', 'actor_movie_rel', 'actors', required=False,ondelete='cascade')

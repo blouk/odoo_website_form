@@ -5,62 +5,55 @@
         <t t-call="report.html_container">
             <t t-set="company" t-value="res_company"/>
             <t t-foreach="docs" t-as="o">
-                <t t-call="report.external_layout">
-                    <div class="page mv-report">
-                        <header t-att-style="'background-image:url(data:image/gif;base64,%s)' %(o.image)">
-                            <div class="img-header">
-                                <img t-att-src="'/web/image/movie/%s/image' %(o.id)"/>
-                            </div>
-                            <div class="overlay">
-                                <div class="row">
-                                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
-                                        <h1><span t-field="o.name"/></h1>
-                                        <h4 class="text-center">
-                                            <t t-set="rate" t-value="[None] * int(o.rate)"/>
-                                            <t t-foreach="rate" t-as="r">
-                                                <i class="fa fa-star" aria-hidden="true"/>
-                                            </t>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </header>
-                        <section class="description">
-                            <h4 class="mt16">Description</h4>
-                            <p><t t-esc="o.description"/></p>
-                            <h4 class="mt16">Actors</h4>
-                            <p>
-                                <t t-if="o.actor_ids">
-                                    <t t-foreach="o.actor_ids" t-as="actor">
-                                        <span><t t-esc="actor.name"/> <t t-esc="actor.firstname"/></span>
-                                    </t>
-                                </t>
-                            </p>
-                        </section>
-                        <footer>
+                <div class="page mv-report">
+                    <div class="head">
+                        <div class="img-header">
+                            <img t-att-src="'/web/image/movie/%s/image' %(o.id)"/>
+                        </div>
+                        <div class="overlay">
                             <div class="row">
-                                <div class="col-xs-3">
-                                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" class="logo"/>
+                                <div>
+                                    <h1><span t-field="o.name"/></h1>
+                                    <h4 class="text-center">
+                                        <t t-set="rate" t-value="[None] * int(o.rate)"/>
+                                        <t t-foreach="rate" t-as="r">
+                                            <i class="fa fa-star"/>
+                                        </t>
+                                    </h4>
                                 </div>
-                                <div class="col-xs-9 text-right" t-field="company.rml_header1"/>
                             </div>
-                        </footer>
-                        <div class="clearfix"/>
+                        </div>
                     </div>
-                </t>
+                    <section class="description">
+                        <h3 class="mt16">Description</h3>
+                        <p><t t-esc="o.description"/></p>
+                        <h3 class="mt16">Actors</h3>
+                        <p>
+                            <t t-if="o.actor_ids">
+                                <t t-foreach="o.actor_ids" t-as="actor">
+                                    <span class="actor"><t t-esc="actor.name"/>
+                                        <t t-esc="actor.firstname"/></span>
+                                </t>
+                            </t>
+                        </p>
+                    </section>
+                    <footer>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" class="logo"/>
+                            </div>
+                            <div class="col-xs-9 text-right" t-field="company.rml_header1"/>
+                        </div>
+                    </footer>
+                    <div class="clearfix"/>
+                </div>
             </t>
         </t>
     </template>
 
-    <template id="report_assets" inherit_id="report.layout">
-        <xpath expr="//head" position="inside">
-            <link rel="stylesheet" href="/website_movie/static/src/css/report.css"/>
-        </xpath>
-    </template>
-
-    <template id="minimal_report" inherit_id="report.minimal_layout">
-        <xpath expr="//head" position="inside">
-            <link rel="stylesheet" href="/website_movie/static/src/css/report.css"/>
+    <template id="assets_common" inherit_id="report.assets_common">
+        <xpath expr="." position="inside">
+            <link href="/website_movie/static/src/css/report.css" rel="stylesheet"/>
         </xpath>
     </template>
 
