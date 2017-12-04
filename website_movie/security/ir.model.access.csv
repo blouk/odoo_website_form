@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_image,image,website_movie.model_movie,base.group_public,1,0,0,0
 access_name,name,website_movie.model_movie,base.group_public,1,0,0,0
 access_description,description,website_movie.model_movie,base.group_public,1,0,0,0
+access_actor,access_actor,model_actor,,1,0,0,0

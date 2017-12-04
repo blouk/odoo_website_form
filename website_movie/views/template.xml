@@ -1,6 +1,5 @@
 <odoo>
 
-
     <template id="assets_frontend" inherit_id="website.assets_frontend">
         <xpath expr="//link[last()]" position="after">
             <link rel="stylesheet" href="/website_movie/static/src/css/main.css"/>
@@ -10,38 +9,45 @@
         </xpath>
     </template>
 
-
     <template id="movie_form">
+
         <t t-if="error">
             <div class="alert alert-danger">
                 <h3 class="text-center">Error</h3>
             </div>
         </t>
-        <form class="mv-form" method="post" t-att-action="url_for('form')" enctype="multipart/form-data">
+        <form class="mv-form" method="post" action="/movie/form" enctype="multipart/form-data">
+            <t t-if="movie">
+                <input type="hidden" name="update" value="1"/>
+                <input type="hidden" name="movie_id" t-att-value="movie.id"/>
+            </t>
             <div class="form-group">
                 <label for="movieName">name</label>
-                <input type="text" name="movieName" class="form-control" id="movieName" placeholder="Enter a movie name"/>
+                <input type="text" name="movieName" class="form-control" id="movieName" placeholder="Enter a movie name" t-att-value="'%s'%(movie.name) if movie else ''"/>
             </div>
             <div class="form-group">
                 <label for="movieDescription">Description</label>
-                <textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Enter a movie description"/>
+                <textarea class="form-control" id="movieDescription" name="movieDescription" placeholder="Enter a movie description"><t t-esc="'%s' %(movie.description) if movie else ''"/></textarea>
             </div>
 
             <div class="form-group">
                 <label for="movieRate">Rate</label>
+                <t t-set="option" t-value="list(xrange(7))"/>
                 <select class="form-control" id="movieRate" name="movieRate">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
+                    <t t-foreach="option" t-as="op">
+                        <option t-att-value="op" t-att-selected="'true' if movie and movie.rate == op else Null"><t t-esc="op"/></option>
+                    </t>
                 </select>
             </div>
+            <div class="form-group" t-if="movie">
+                <h4>Current Picture</h4>
+                <img t-attf-src="/web/image/movie/{{ movie.id }}/image" class="img img-responsive" style="max-height: 150px;"/>
+                <div class="clear-fix"/>
+            </div>
+
             <div class="form-group">
                 <input type="file" name="movieImage" class="mv-file"/>
                 <div class="input-group">
-
                     <input type="text" class="form-control  mv-file" disabled="disabled" placeholder="Upload Image"/>
                     <span class="input-group-btn">
                         <button class="btn btn-primary mv-browse" type="button">
@@ -52,15 +58,10 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-6 text-center">
+                    <div class="col-sm-12 text-center">
                         <button class="btn btn-danger input-lg js-mv-submit-post mb16" type="submit">
-                            Send (http post)
-                        </button>
-                    </div>
-
-                    <div class="col-sm-6 text-center">
-                        <button class="btn btn-danger input-lg js-mv-submit-ajx mb16" type="submit">
-                            Send (ajax post)
+                            <t t-if="movie">Update</t>
+                            <t t-else="">Send</t>
                         </button>
                     </div>
                 </div>
@@ -68,7 +69,6 @@
 
         </form>
     </template>
-
 
     <template id="detail" name="Movie Detail">
         <t t-call="website.layout">
@@ -93,12 +93,8 @@
                     </t>
                 </div>
             </section>
-
-            <t t-raw="movie"/>
         </t>
-
     </template>
-
 
     <template id="form" name="Form to add a movie">
         <t t-call="website.layout">

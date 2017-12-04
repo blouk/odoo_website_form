@@ -16,9 +16,13 @@ class MovieController(http.Controller):
             record = dict(name=vals['movieName'].strip(), description=vals['movieDescription'].strip(),rate=vals['movieRate'])
             if(vals.get('movieImage')):
                 record['image'] = base64.encodestring(vals['movieImage'].read())
-
             try:
-                movie.create(record)
+                if vals['update'] == '1':
+                    movie_id = movie.search([('id','=',vals.get('movie_id'))])
+                    movie_id.update(record)
+                else:
+                    movie.create(record)
+
             except Exception:
                 request.cr.rollback()
                 form_error = True
