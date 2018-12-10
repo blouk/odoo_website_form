@@ -3,3 +3,8 @@ access_image,image,website_movie.model_movie,base.group_public,1,0,0,0
 access_name,name,website_movie.model_movie,base.group_public,1,0,0,0
 access_description,description,website_movie.model_movie,base.group_public,1,0,0,0
 access_actor,access_actor,model_actor,base.group_public,1,0,0,0
+
+access_image_user,image,website_movie.model_movie,base.group_user,1,1,1,0
+access_name_user,name,website_movie.model_movie,base.group_user,1,1,1,0
+access_description_user,description,website_movie.model_movie,base.group_user,1,1,1,0
+access_actor_user,access_actor,model_actor,base.group_user,1,1,1,0

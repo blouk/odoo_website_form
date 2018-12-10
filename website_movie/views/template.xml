@@ -2,7 +2,7 @@
 
     <template id="assets_frontend" inherit_id="website.assets_frontend">
         <xpath expr="//link[last()]" position="after">
-            <link rel="stylesheet" href="/website_movie/static/src/css/main.css"/>
+            <link rel="stylesheet" href="/website_movie/static/src/scss/main.scss"/>
         </xpath>
         <xpath expr="//script[last()]" position="after">
             <script src="/website_movie/static/src/js/main.js" type="text/javascript"/>
@@ -32,7 +32,7 @@
 
             <div class="form-group">
                 <label for="movieRate">Rate</label>
-                <t t-set="option" t-value="list(xrange(7))"/>
+                <t t-set="option" t-value="list(range(7))"/>
                 <select class="form-control" id="movieRate" name="movieRate">
                     <t t-foreach="option" t-as="op">
                         <option t-att-value="op" t-att-selected="'true' if movie and movie.rate == op else Null"><t t-esc="op"/></option>

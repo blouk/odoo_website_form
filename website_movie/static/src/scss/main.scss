@@ -1,0 +1,25 @@
+.mv-form {
+    textarea {
+        height: 20em;
+    }
+}
+
+.mv-file {
+    visibily: hidden;
+    position: absolute;
+}
+
+.mv-list-block {
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+
+    img {
+        max-height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .alert {
+        text-align: justify;
+    }
+}

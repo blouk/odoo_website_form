@@ -1,20 +1,23 @@
+$font-path: '../fonts/';
 @font-face {
     font-family: '28 Days Later';
-    src: url("/website_movie/static/src/fonts/28DaysLater.eot");
-    src: url("/website_movie/static/src/fonts/28DaysLater.eot?#iefix") format("embedded-opentype"), url("/website_movie/static/src/fonts/28DaysLater.woff") format("woff"), url("/website_movie/static/src/fonts/28DaysLater.ttf") format("truetype");
+    src: url("#{$font-path}28DaysLater.eot");
+    src: url("#{$font-path}28DaysLater.eot?#iefix") format("embedded-opentype"), url("#{$font-path}28DaysLater.woff") format("woff"), url("#{$font-path}28DaysLater.ttf") format("truetype");
     font-weight: normal;
-    font-style: normal
+    font-style: normal;
 }
 
+
 @media screen, print {
-    html, body {
+    body,
+    html {
         display: block;
-        background: red
+        background: red;
     }
 
     .mv-report {
         position: relative;
-        height: 100vw
+        height: 100vw;
     }
 
     .mv-report .head {
@@ -22,17 +25,17 @@
         z-index: 2;
         positon: relative;
         width: 100%;
-        min-height: 450px
+        min-height: 450px;
     }
 
     .mv-report .head .img-header {
         width: 100%;
         overflow: hidden;
-        height: 450px
+        height: 450px;
     }
 
     .mv-report .head .img-header img {
-        width: 100%
+        width: 100%;
     }
 
     .mv-report .head .overlay {
@@ -41,7 +44,7 @@
         padding-bottom: 40px;
         position: absolute;
         top: 0;
-        width: 100%
+        width: 100%;
     }
 
     .mv-report .head .overlay h1 {
@@ -54,32 +57,35 @@
         text-align: center;
         margin-left: auto;
         margin-right: auto;
-        display: block
+        display: block;
     }
 
     .mv-report .head .overlay h4 i {
         text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
         color: #f0da0b !important;
-        font-size: 3em
+        font-size: 3em;
     }
 
     .mv-report .description {
         background-color: rgba(0, 0, 0, 0.2);
         font-size: 1.2em;
-        padding: 20px 20px;
-        min-height: 450px
+        padding: 20px;
+        min-height: 450px;
     }
 
-    .mv-report .description h1, .mv-report .description h2, .mv-report .description h3, .mv-report .description h4 {
-        color: rgba(0, 0, 0, 0.6) !important
+    .mv-report .description h1,
+    .mv-report .description h2,
+    .mv-report .description h3,
+    .mv-report .description h4 {
+        color: rgba(0, 0, 0, 0.6) !important;
     }
 
     .mv-report .actor::after {
-        content: ', '
+        content: ', ';
     }
 
     .mv-report .actor:last-child::after {
-        content: '.'
+        content: '.';
     }
 
     .mv-report footer {
@@ -87,12 +93,10 @@
         width: 100%;
         position: absolute;
         display: block;
-        padding: 20px 20px
+        padding: 20px;
     }
 
     .mv-report footer .logo {
-        max-height: 30px !important
+        max-height: 30px !important;
     }
 }
-
-/*# sourceMappingURL=report.css.map */

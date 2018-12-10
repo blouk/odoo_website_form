@@ -10,7 +10,7 @@ Movie
 ========================
     """,
     "depends": [
-        'website', 'report',
+        'website'
     ],
     "data": [
         'security/ir.model.access.csv',
